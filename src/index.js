@@ -42,14 +42,20 @@ function onSearch(event) {
 }
 
 function getInfo(data) {
-  const markupInfo = `<img src="${data[0].flags.svg}" alt="${
-    data[0].name.official
-  }" width="30">
-    <h1>${data[0].name.official}</h1>
+  const markupInfo = `<div class="wrap"><img class="flag" src="${
+    data[0].flags.svg
+  }" alt="${data[0].name.official}" width="40">
+    <h1 class="title">${data[0].name.official}</h1></div>
     <ul>
-      <li>Capital: ${data[0].capital}</li>
-      <li>Population: ${data[0].population}</li>
-      <li>Languages: ${Object.values(data[0].languages)}</li>
+      <li class="info-list__item"><span class="category">Capital: </span>${
+        data[0].capital
+      }</li>
+      <li class="info-list__item"><span class="category">Population: </span>${
+        data[0].population
+      }</li>
+      <li class="info-list__item"><span class="category">Languages: </span>${Object.values(
+        data[0].languages
+      )}</li>
     </ul>`;
   countryInfo.innerHTML = markupInfo;
 }
@@ -57,11 +63,11 @@ function getInfo(data) {
 function getList(data) {
   const markupList = data
     .map(
-      country => `<li>
-        <img
+      country => `<li class="country-list__item">
+        <img class="flag"
           src="${country.flags.svg}"
           alt="${country.name.official}"
-          width="30"></img>
+          width="40"></img>
         ${country.name.official}
       </li>`
     )
